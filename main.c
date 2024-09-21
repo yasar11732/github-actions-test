@@ -4,6 +4,7 @@
 
 int main(void) {
     curl_global_init(CURL_GLOBAL_ALL);
+    puts("Another dummy change to trigger rebuild.");
     xmlTextWriterPtr writer;
     writer = xmlNewTextWriterFilename("test.xml", 0);
     xmlTextWriterStartDocument(writer, NULL, "UTF-8", NULL);
