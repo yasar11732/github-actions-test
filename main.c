@@ -8,6 +8,7 @@ int main(void) {
     xmlTextWriterStartElement(writer, "Powersettings");
     xmlTextWriterWriteElement(writer, "PowerScheme", "Testing"); xmlTextWriterEndElement(writer);
     xmlTextWriterWriteElement(writer, "CPUSpeed", "Adaptive"); xmlTextWriterEndElement(writer);
+    xmlTextWriterWriteElement(writer, "Dummy", "dummy"); xmlTextWriterEndElement(writer);
     xmlTextWriterEndElement(writer);
     xmlTextWriterEndDocument(writer);
     xmlFreeTextWriter(writer);
