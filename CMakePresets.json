@@ -1,0 +1,49 @@
+{
+    "version": 8,
+    "configurePresets": [
+        {
+            "name": "ninja-multi-vcpkg",
+            "generator": "Ninja Multi-Config",
+			"binaryDir": "${sourceDir}/builds/${presetName}",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        }
+    ],
+	"buildPresets": [
+        {
+            "name": "ninja-vcpkg-debug",
+            "configurePreset": "ninja-multi-vcpkg",
+            "displayName": "Build (Debug)",
+            "configuration": "Debug"
+        },
+        {
+            "name": "ninja-vcpkg-release",
+            "configurePreset": "ninja-multi-vcpkg",
+            "displayName": "Build (Release)",
+            "configuration": "Release"
+        }
+	],
+    "testPresets": [
+        {
+            "name":"test-ninja-vcpkg",
+            "configurePreset": "ninja-multi-vcpkg",
+            "hidden": true
+        },
+        {
+            "name": "test-debug",
+            "displayName": "Test (Debug)",
+            "configuration": "Debug",
+            "inherits":["test-ninja-vcpkg"]
+        },
+        {
+            "name": "test-release",
+            "displayName": "Test (Release)",
+            "configuration": "Release",
+            "inherits":["test-ninja-vcpkg"]
+        }
+    ]
+}
