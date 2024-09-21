@@ -6,8 +6,10 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 project ("github-actions-test" LANGUAGES C)
 
 find_package(LibXml2 REQUIRED)
+find_package(CURL CONFIG REQUIRED)
+
 add_executable (github-actions-test main.c)
-target_link_libraries(github-actions-test PRIVATE LibXml2::LibXml2)
+target_link_libraries(github-actions-test PRIVATE ${LIBXML2_LIBRARIES} CURL::libcurl)
 
 option(BUILD_TESTS "Build Test Programs" OFF)
 

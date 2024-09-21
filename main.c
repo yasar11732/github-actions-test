@@ -1,7 +1,9 @@
 #include <stdio.h>
+#include <curl/curl.h>
 #include <libxml/xmlwriter.h>
 
 int main(void) {
+    curl_global_init(CURL_GLOBAL_ALL);
     xmlTextWriterPtr writer;
     writer = xmlNewTextWriterFilename("test.xml", 0);
     xmlTextWriterStartDocument(writer, NULL, "UTF-8", NULL);
@@ -12,4 +14,5 @@ int main(void) {
     xmlTextWriterEndElement(writer);
     xmlTextWriterEndDocument(writer);
     xmlFreeTextWriter(writer);
+    curl_global_cleanup();
 }
